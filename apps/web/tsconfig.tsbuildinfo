@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/components/navbar.tsx","./src/context/authcontext.tsx","./src/lib/api.ts","./src/pages/bookingconfirmationpage.tsx","./src/pages/dashboardpage.tsx","./src/pages/homepage.tsx","./src/pages/loginpage.tsx","./src/pages/mybookingspage.tsx","./src/pages/queuewaitingpage.tsx","./src/pages/seatselectionpage.tsx"],"version":"5.9.3"}
