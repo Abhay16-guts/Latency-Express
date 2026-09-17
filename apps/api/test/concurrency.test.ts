@@ -33,7 +33,9 @@ describe('High-Concurrency Reservation & Idempotency Suite', () => {
     const schedRes = await query('SELECT id FROM schedules LIMIT 1');
     scheduleId = schedRes.rows[0].id;
 
-    // Reset all seats for this schedule to AVAILABLE for clean test run
+    // Clean up any existing bookings and passengers for this schedule to ensure repeatable test runs
+    await query("DELETE FROM passengers WHERE seat_id IN (SELECT id FROM seats WHERE schedule_id = $1)", [scheduleId]);
+    await query("DELETE FROM bookings WHERE schedule_id = $1", [scheduleId]);
     await query("UPDATE seats SET status = 'AVAILABLE' WHERE schedule_id = $1", [scheduleId]);
 
     const seatRes = await query(
