@@ -1,0 +1,34 @@
+{
+  "name": "latency-express-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "High-concurrency railway reservation prototype engineered for extreme demand spikes",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/api & npm run dev --workspace=apps/web",
+    "dev:api": "npm run dev --workspace=apps/api",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspace=apps/api",
+    "test:concurrency": "npm run test:concurrency --workspace=apps/api",
+    "test:benchmark": "node load-tests/run-benchmarks.js",
+    "db:migrate": "npm run db:migrate --workspace=apps/api",
+    "db:seed": "npm run db:seed --workspace=apps/api",
+    "db:setup": "npm run db:migrate && npm run db:seed"
+  },
+  "keywords": [
+    "tatkal",
+    "high-concurrency",
+    "reservation-system",
+    "fastify",
+    "react",
+    "postgresql",
+    "redis"
+  ],
+  "author": "Latency Express Team",
+  "license": "ISC"
+}
